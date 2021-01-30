@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -20,6 +19,14 @@ import android.widget.ListPopupWindow;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
@@ -30,6 +37,10 @@ import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -54,10 +65,13 @@ public class MainActivity extends AppCompatActivity {
     private HitResult myhit;
     private float mySize = 70f;
     private float mytravel=0.01f, distance_x=0f, distance_z=0f, myangle=0f;
+    private RequestQueue queue;
 
 
     int[] sfb_source = {R.raw.macbook}; //, R.raw.wheelchair, R.raw.stroller, R.raw.cart};
     String[] arr_models = {"Apple Macbook"};//, "Wheelchair", "Stroller", "Shopping cart"};
+//    int[] sfb_source = { R.raw.wheelchair, R.raw.stroller, R.raw.cart};//, R.raw.macbook};
+//    String[] arr_models = { "Google Home Max", "Apple HomePod", "Amazon Alexa"};//,"Apple Macbook"};
     private ModelRenderable[] renderable_models = new ModelRenderable[sfb_source.length];
 
     @Override
@@ -123,7 +137,11 @@ public class MainActivity extends AppCompatActivity {
         accelerate.setOnTouchListener((v, event) -> {
             if (mytranode != null) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    myangle = set(mytranode.getLocalRotation());
+                    try {
+                        myangle = set(mytranode.getLocalRotation());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                 }
@@ -138,7 +156,11 @@ public class MainActivity extends AppCompatActivity {
                 Quaternion q1 = mytranode.getLocalRotation();
                 Quaternion q2 = Quaternion.axisAngle(new Vector3(0, 1f, 0f), .5f);
                 mytranode.setLocalRotation(Quaternion.multiply(q1, q2));
-                myangle = set(mytranode.getLocalRotation());
+                try {
+                    myangle = set(mytranode.getLocalRotation());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             return true;
@@ -150,7 +172,11 @@ public class MainActivity extends AppCompatActivity {
                 Quaternion q1 = mytranode.getLocalRotation();
                 Quaternion q2 = Quaternion.axisAngle(new Vector3(0, 1f, 0f), -.5f);
                 mytranode.setLocalRotation(Quaternion.multiply(q1, q2));
-                myangle = set(mytranode.getLocalRotation());
+                try {
+                    myangle = set(mytranode.getLocalRotation());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             return true;
@@ -244,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public float set(Quaternion q1) {
+    public float set(Quaternion q1) throws JSONException {
         Vector3 angles = new Vector3();
         double sqw = q1.w*q1.w;
         double sqx = q1.x*q1.x;
@@ -268,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
         angles.y = (float) Math.asin(2*test/unit);
         angles.z = (float) atan2(2*q1.x*q1.w-2*q1.y*q1.z , -sqx + sqy - sqz + sqw);
         return angles.x;
+//        if (!!!!!true) getRequest();
     }
 
 
@@ -310,4 +337,54 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    public void getRequest() throws JSONException {
+        JSONObject eventRequest = new JSONObject();
+        JSONObject subCategories = new JSONObject();
+        eventRequest.put("id", "wedu8g1pifug3p98q3ihgbuewipdjkc");
+
+        JSONArray array = new JSONArray();
+
+        for (String guest : this.arr_models) {
+            JSONObject guestId = new JSONObject();
+            guestId.put("guestId", guest);
+            array.put(guestId);
+        }
+
+
+        eventRequest.put("altLangSeoText", "departements");
+        eventRequest.put("seoText", "departments");
+        eventRequest.put("Brand", "BestBuyCanada");
+        eventRequest.put("productCount", 829166);
+        eventRequest.put("id", "Departments");
+        eventRequest.put("name", "Departments");
+        eventRequest.put("altLangSeoText", "departements");
+        eventRequest.put("altLangSeoText", "departements");
+        eventRequest.put("altLangSeoText", "departements");
+        eventRequest.put("altLangSeoText", "departements");
+        subCategories.put("seoText", "computers-tablets");
+        subCategories.put("id", "20001");
+        subCategories.put("name", "Computers & Tablets");
+        subCategories.put("hasSubcategories", true);
+        subCategories.put("productCount", 297870);
+        eventRequest.put("subCategories", subCategories);
+
+        Context ctx = getApplicationContext();
+        queue = Volley.newRequestQueue(ctx);
+        // Get all products in the computers and tablets categories
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
+                getString(R.string.backend_url),
+                eventRequest,
+                response -> {
+                    try {
+                        VolleyLog.v("Response:%n %s", response.toString(4));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }, error -> VolleyLog.e("Error: ", error.getMessage()));
+        // Start the request immediately
+
+        queue.add(request);
+    }
+
 }

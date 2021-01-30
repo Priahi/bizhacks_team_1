@@ -3,4 +3,5 @@
     <string name="str_left">Left</string>
     <string name="str_accelerate">Accelerate</string>
     <string name="str_right">Right</string>
+    <string name="backend_url">http://13.77.158.161:3000</string>
 </resources>
