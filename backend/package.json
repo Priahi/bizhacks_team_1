@@ -1,0 +1,52 @@
+{
+  "name": "bestbuy",
+  "version": "2.4.0",
+  "description": "High level node.js client for the Best Buy API.",
+  "main": "index.js",
+  "scripts": {
+    "record": "rm -rf test/fixtures/*.json && NOCK_BACK_MODE=record npm test",
+    "test-live": "NOCK_BACK_MODE=wild npm test",
+    "test": "tape test/*.test.js | tap-spec && semistandard ",
+    "coverage": "istanbul cover tape test/*.test.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BestBuyAPIs/bestbuy-sdk-js.git"
+  },
+  "keywords": [
+    "bestbuy",
+    "api",
+    "retail",
+    "electronics",
+    "product reviews"
+  ],
+  "author": "Ian Felton <ian@ianfelton.com>",
+  "contributors": [
+    "Eric Caron <eric.caron@gmail.com> (http://ericcaron.com/)",
+    "Dan Flettre <flettre@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BestBuyAPIs/bestbuy-sdk-js/issues"
+  },
+  "homepage": "https://github.com/BestBuyAPIs/bestbuy-sdk-js",
+  "dependencies": {
+    "@flet/xml-nodes": "^1.0.0",
+    "JSONStream": "^1.3.1",
+    "axios": "^0.18.1",
+    "limiter": "^1.1.0",
+    "peek-stream": "^1.1.2",
+    "pump": "^1.0.2",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.11",
+    "istanbul": "^0.4.0",
+    "semistandard": "^14.2.0",
+    "sinon": "^8.1.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3",
+    "tape-nock": "1.4.1"
+  }
+}
