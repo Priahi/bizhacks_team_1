@@ -1,0 +1,345 @@
+{
+  materials: [
+    {
+      name: 'aluminium',
+      parameters: [
+        {
+          baseColor: 'mpm_f21_text_mask',
+        },
+        {
+          baseColorTint: [
+            0.17254900000000001,
+            0.17254900000000001,
+            0.17254900000000001,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.218218,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'touchpad',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.75294099999999997,
+            0.77647100000000002,
+            0.78823500000000002,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.25,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'keyboard',
+      parameters: [
+        {
+          baseColor: 'mpm_f21_keyboard_diff',
+        },
+        {
+          baseColorTint: [
+            0.217638,
+            0.217638,
+            0.217638,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.218218,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'rubber',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.019608,
+            0.019608,
+            0.019608,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.218218,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'screws',
+      parameters: [
+        {
+          baseColor: 'mpm_f21_screw_diff',
+        },
+        {
+          baseColorTint: [
+            0.217638,
+            0.217638,
+            0.217638,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.218218,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'metal',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.39215699999999998,
+            0.39215699999999998,
+            0.39215699999999998,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.25,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'white_plastic',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.70116999999999996,
+            0.71546600000000005,
+            0.72991899999999998,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.222222,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'apple',
+      parameters: [
+        {
+          baseColor: 'mpm_f21_apple_logo_diff',
+        },
+        {
+          baseColorTint: [
+            0.217638,
+            0.217638,
+            0.217638,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.185695,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'display',
+      parameters: [
+        {
+          baseColor: 'mpm_f21_home_screen_diff',
+        },
+        {
+          baseColorTint: [
+            0.217638,
+            0.217638,
+            0.217638,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.16666700000000001,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'display_frame',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            0.00080500000000000005,
+            0.00080500000000000005,
+            0.00080500000000000005,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.16666700000000001,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'glass',
+      parameters: [
+        {
+          baseColor: null,
+        },
+        {
+          baseColorTint: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.16666700000000001,
+        },
+        {
+          opacity: 0.20000000000000001,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/mpm_f21_Apple_MacBook_Pro_15/mpm_f21__Apple_MacBook_Pro_15.obj',
+    name: 'mpm_f21__Apple_MacBook_Pro_15',
+    recenter: 'root',
+    scale: 0.0039399999999999999,
+  },
+  samplers: [
+    {
+      file: 'sampledata/mpm_f21_Apple_MacBook_Pro_15\\mpm_f21_text_mask.jpg',
+      name: 'mpm_f21_text_mask',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'mpm_f21_text_mask.jpg',
+    },
+    {
+      file: 'sampledata/mpm_f21_Apple_MacBook_Pro_15\\mpm_f21_keyboard_diff.jpg',
+      name: 'mpm_f21_keyboard_diff',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'mpm_f21_keyboard_diff.jpg',
+    },
+    {
+      file: 'sampledata/mpm_f21_Apple_MacBook_Pro_15\\mpm_f21_home_screen_diff.jpg',
+      name: 'mpm_f21_home_screen_diff',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'mpm_f21_home_screen_diff.jpg',
+    },
+    {
+      file: 'sampledata/mpm_f21_Apple_MacBook_Pro_15\\mpm_f21_screw_diff.jpg',
+      name: 'mpm_f21_screw_diff',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'mpm_f21_screw_diff.jpg',
+    },
+    {
+      file: 'sampledata/mpm_f21_Apple_MacBook_Pro_15\\mpm_f21_apple_logo_diff.jpg',
+      name: 'mpm_f21_apple_logo_diff',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'mpm_f21_apple_logo_diff.jpg',
+    },
+  ],
+  version: '0.54:2',
+}
